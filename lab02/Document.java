@@ -24,7 +24,7 @@ public class Document {
         if ((Calendar.getInstance().get(Calendar.YEAR) - 5) > Integer.valueOf(getYear())) {
             tooOld = true;
         }
-        symbols = getText().replace(" ","").length();
+        symbols = getText().length();
         words = countWords(this.getText());
         if (symbols / words >= 7) {
             tooSmart = true;

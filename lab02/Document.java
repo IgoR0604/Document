@@ -11,18 +11,17 @@ public class Document {
     private int symbols;
     private int words;
     private final String author;
-    private String title;
-    private String year;
-    private String text;
+    private final String title;
+    private final String year;
+    private final String text;
 
     public Document(String fileName) throws IOException {
         BufferedReader inputStream = new BufferedReader(new FileReader(fileName));
-        this.setAuthor(inputStream.readLine());
-        this.setTitle(inputStream.readLine());
-        this.setYear(inputStream.readLine());
-        this.setText(inputStream.readLine());
-        this.isOld();
-        this.isSmart();
+        author = inputStream.readLine();
+        title = inputStream.readLine();
+        year = inputStream.readLine();
+        text = inputStream.readLine();
+       
     }
 
     private int takeOutWords(String string) {

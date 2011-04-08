@@ -10,7 +10,7 @@ public class Document {
     private boolean tooSmart;
     private int symbols;
     private int words;
-    private String author;
+    private final String author;
     private String title;
     private String year;
     private String text;

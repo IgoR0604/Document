@@ -21,10 +21,17 @@ public class Document {
         title = inputStream.readLine();
         year = inputStream.readLine();
         text = inputStream.readLine();
-       
+        if ((Calendar.getInstance().get(Calendar.YEAR) - 5) > Integer.valueOf(getYear())) {
+            tooOld = true;
+        }
+        symbols = getText().replace(" ","").length();
+        words = countWords(this.getText());
+        if (symbols / words >= 7) {
+            tooSmart = true;
+        }
     }
 
-    private int takeOutWords(String string) {
+    private int countWords(String string) {
         BreakIterator iterator = BreakIterator.getWordInstance();
         int count = 0;
         iterator.setText(string);
@@ -40,21 +47,6 @@ public class Document {
         }
         return count;
     }
-
-    private void isOld() {
-        if ((Calendar.getInstance().get(Calendar.YEAR) - 5) > Integer.valueOf(getYear())) {
-            tooOld = true;
-        }
-    }
-
-    private void isSmart() {
-        symbols = getText().replace(" ","").length();
-        words = takeOutWords(this.getText());
-        if (symbols / words >= 7) {
-            tooSmart = true;
-        }
-    }
-
     public int getSymbols() {
         return symbols;
     }
@@ -75,31 +67,15 @@ public class Document {
         return author;
     }
 
-    public void setAuthor(String arg) {
-        author = arg;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String arg) {
-        title = arg;
     }
 
     public String getYear() {
         return year;
     }
 
-    public void setYear(String arg) {
-        year = arg;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String arg) {
-        text = arg;
     }
 }
